@@ -6,17 +6,12 @@ import os
 folderpath = sys.argv[1]
 tickinterval = 1 
 
-ignored_files = [
-    '__init__.py',
-    'utilities.py',
-]
-
 def do_submit(folderpath):
     files = os.listdir(folderpath)
     for file in files:
-        if file.endswith('.py') and file not in ignored_files:
+        if file.endswith('.py'):
             print(f'[INFO][{datetime.now()}] Executing exploit in {file}!')
-            os.system(f'python3 {os.path.join(folderpath, file)} |grep Authenticated')
+            os.system(f'python3 {os.path.join(folderpath, file)}')
 
 
 print(f'[INFO] Folder path set to {folderpath}')
